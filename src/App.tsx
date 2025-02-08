@@ -20,10 +20,10 @@ function App() {
       const data = await response.json();
       console.log("Received data:", data);
       setreview(data.review);
-      console.log("Setting loading to false");
+      // console.log("Setting loading to false");
       setLoading(false);
     } catch (error) {
-      console.error("Error:", error);
+      // console.error("Error:", error);
       setLoading(false);
       alert("something went wrong");
     }

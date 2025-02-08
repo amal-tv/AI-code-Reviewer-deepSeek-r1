@@ -12,7 +12,7 @@ app.use(cors());
 
 app.post('/api/v1/reviews',async(req,res)=>{
   const code = req.body.code;
-  console.log("here is the cde" + code);
+  // console.log("here is the cde" + code);
     try {
        const review =  await generateReview(code);
 
