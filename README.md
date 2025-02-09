@@ -1,4 +1,4 @@
-# Code Review App
+# Code Review App - with DeepSeek-R1
 
 This project is a **Code Review Application** built using React, Express, and LangChain's integration with Ollama. The app allows users to input code, which is then analyzed by an AI model to provide feedback on improvements, best practices, and potential optimizations.
 
@@ -25,6 +25,7 @@ This project is a **Code Review Application** built using React, Express, and La
 - Node.js
 - Express.js
 - LangChain with Ollama
+- DeepSeek-V1 (AI model for code analysis)
 - dotenv (for environment variable management)
 - CORS
 
@@ -55,7 +56,7 @@ This project is a **Code Review Application** built using React, Express, and La
 
    ```sh
    MODEL_NAME=your_model_name
-   TEMPERATURE=0.7
+   TEMPERATURE=0
    ```
 
 4. **Run the Backend**
@@ -91,36 +92,10 @@ This project is a **Code Review Application** built using React, Express, and La
   }
   ```
 
-## Project Structure
-
-```
-/code-review-app
-├── frontend
-│   ├── src
-│   │   ├── components
-│   │   │   ├── Editor.tsx
-│   │   │   ├── Review.tsx
-│   │   ├── App.tsx
-│   │   ├── main.tsx
-│   ├── package.json
-├── server
-│   ├── review.js
-│   ├── index.js
-│   ├── .env
-│   ├── package.json
-├── README.md
-```
-
-## Future Improvements
-
-- Support for multiple programming languages
-- Syntax highlighting for different languages
-- More detailed AI suggestions with code refactoring examples
-
 ## License
 
 This project is licensed under the MIT License.
 
 ## Author
 
-[Your Name](https://github.com/your-username)
+[Amal TV](https://github.com/amal-tv)
