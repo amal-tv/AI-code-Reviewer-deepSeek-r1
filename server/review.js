@@ -1,8 +1,8 @@
 import { ChatOllama } from "@langchain/ollama";
 
 const llm = new ChatOllama({
-  model: "deepseek-r1:1.5b",  
-  temperature: 0,
+  model: process.env.MODEL_NAME,  
+  temperature: parseFloat(process.env.TEMPERATURE),
 });
 
 const prompt = `You are an expert front-end software engineer reviewing the code in an interview. You need to review and complete the tasks.

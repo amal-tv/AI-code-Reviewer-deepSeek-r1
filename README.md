@@ -1,50 +1,126 @@
-# React + TypeScript + Vite
+# Code Review App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a **Code Review Application** built using React, Express, and LangChain's integration with Ollama. The app allows users to input code, which is then analyzed by an AI model to provide feedback on improvements, best practices, and potential optimizations.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Code Editor**: A built-in code editor using `@uiw/react-codemirror` for writing and editing JavaScript/JSX code.
+- **AI-Powered Code Review**: Sends the user's code to an AI model via an Express backend, which returns a structured review with suggestions and improvements.
+- **Markdown Preview**: Displays AI-generated reviews in a clean, readable markdown format.
+- **Real-Time Feedback**: Provides feedback asynchronously while indicating a loading state.
+- **Secure Processing**: Utilizes `DOMPurify` to sanitize AI-generated content to prevent security risks.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Frontend:
 
-- Configure the top-level `parserOptions` property like this:
+- React.js
+- TypeScript
+- Tailwind CSS
+- `@uiw/react-codemirror`
+- `@uiw/react-markdown-preview`
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Backend:
+
+- Node.js
+- Express.js
+- LangChain with Ollama
+- dotenv (for environment variable management)
+- CORS
+
+## Installation and Setup
+
+### Prerequisites:
+
+- Node.js installed
+- Ollama installed and configured with a suitable AI model
+
+### Steps:
+
+1. **Clone the Repository**
+
+   ```sh
+   git clone https://github.com/your-username/code-review-app.git
+   cd code-review-app
+   ```
+
+2. **Install Dependencies**
+
+   ```sh
+   npm install
+   ```
+
+3. **Set Up Environment Variables**
+   Create a `.env` file in the root directory and add:
+
+   ```sh
+   MODEL_NAME=your_model_name
+   TEMPERATURE=0.7
+   ```
+
+4. **Run the Backend**
+
+   ```sh
+   cd server
+   node index.js
+   ```
+
+5. **Run the Frontend**
+
+   ```sh
+   npm run dev
+   ```
+
+6. **Open in Browser**
+   Navigate to `http://localhost:5173` (or the specified port) to use the application.
+
+## API Endpoints
+
+### `POST /api/v1/reviews`
+
+- **Request Body:**
+  ```json
+  {
+    "code": "// JavaScript code to be reviewed"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "review": "AI-generated feedback on the code"
+  }
+  ```
+
+## Project Structure
+
+```
+/code-review-app
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   │   ├── Editor.tsx
+│   │   │   ├── Review.tsx
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   ├── package.json
+├── server
+│   ├── review.js
+│   ├── index.js
+│   ├── .env
+│   ├── package.json
+├── README.md
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Future Improvements
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Support for multiple programming languages
+- Syntax highlighting for different languages
+- More detailed AI suggestions with code refactoring examples
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## License
+
+This project is licensed under the MIT License.
+
+## Author
+
+[Your Name](https://github.com/your-username)

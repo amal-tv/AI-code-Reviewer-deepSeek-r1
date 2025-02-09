@@ -1,9 +1,12 @@
 import express from "express";
 import cors from 'cors';
+import * as dotenv from "dotenv";
+
 import generateReview from "./review.js";
 const app = express();
 
 const port = 3000;
+dotenv.config();
 
 
 
