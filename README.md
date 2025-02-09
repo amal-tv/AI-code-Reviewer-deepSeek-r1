@@ -52,7 +52,7 @@ This project is a **Code Review Application** built using React, Express, and La
    ```
 
 3. **Set Up Environment Variables**
-   Create a `.env` file in the root directory and add:
+   Create a `.env` file inside the server folder and add:
 
    ```sh
    MODEL_NAME=your_model_name
