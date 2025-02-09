@@ -1,4 +1,11 @@
+import * as dotenv from "dotenv"; 
+dotenv.config();
 import { ChatOllama } from "@langchain/ollama";
+
+
+console.log("Loaded MODEL_NAME:", process.env.MODEL_NAME);
+console.log("Loaded MODEL_NAME:", process.env.TEMPERATURE);
+console.log("Loaded MODEL_NAME:", parseFloat(process.env.TEMPERATURE));
 
 const llm = new ChatOllama({
   model: process.env.MODEL_NAME,  
@@ -33,13 +40,21 @@ Key guidelines for your response:
 If no changes are needed, clearly state: "No improvements necessary."
 `;
 
-async function generateReview(code) {
-  const response = await llm.invoke([
-    ["system", prompt],
-    ["human", code],
-  ]);
 
-  return response.content;
+
+
+
+async function generateReview(code) {
+  try {
+    const response = await llm.invoke([
+      ["system", prompt],
+      ["human", code],
+    ]);
+    return response.content;
+  } catch (error) {
+    console.error("Error in generateReview:", error);
+    throw new Error("Failed to generate review");
+  }
 }
 
 export default generateReview;
